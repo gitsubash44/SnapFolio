@@ -7,7 +7,6 @@ class about(models.Model):
     phone = models.CharField(max_length=20)
     location = models.CharField(max_length=100)
     profile_image = models.ImageField(upload_to='profile/')
-    badge_icon = models.CharField(max_length=50, blank=True)
     description = models.TextField()
     description_secondary = models.TextField(blank=True)
     specialization = models.CharField(max_length=100)

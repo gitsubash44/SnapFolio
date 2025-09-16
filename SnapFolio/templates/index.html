@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -76,7 +77,7 @@
   </header>
 
   <main class="main">
-
+{% load static %}
     <!-- Hero Section -->
     <section id="hero" class="hero section">
 
@@ -124,115 +125,123 @@
         </div>
       </div>
 
-    </section><!-- /Hero Section -->
+    </section>
+    <!-- /Hero Section -->
 
     <!-- About Section -->
     <section id="about" class="about section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row">
-          <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
-            <div class="profile-card">
-              <div class="profile-header">
-                <div class="profile-image">
-                  <img src="static/img/profile/profile-square-3.webp" alt="Profile Image" class="img-fluid">
-                </div>
-                <div class="profile-badge">
-                  <i class="bi bi-check-circle-fill" style="color: blue;"></i>
-                </div>
-              </div>
-
-              <div class="profile-content">
-                <h3>Subash Dhami</h3>
-                <p class="profession">Creative Designer &amp; Developer</p>
-
-                <div class="contact-links">
-                  <a href="mailto:dhamisubash866@gmail.com" class="contact-item">
-                    <i class="bi bi-envelope"></i>
-                    dhamisubash866@gmail.com
-                  </a>
-                  <a href="tel:9862451644" class="contact-item">
-                    <i class="bi bi-telephone"></i>
-                    +977 9862451644
-                  </a>
-                  <a href="#" class="contact-item">
-                    <i class="bi bi-geo-alt"></i>
-                    Kathmandu, Nepal
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
-            <div class="about-content">
-              <div class="section-header">
-                <span class="badge-text">Get to Know Me</span>
-                <h2>Passionate About Creating Digital Experiences</h2>
-              </div>
-
-              <div class="description">
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
-              </div>
-
-              <div class="stats-grid">
-                <div class="stat-item">
-                  <div class="stat-number">150+</div>
-                  <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number">5+</div>
-                  <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number">98%</div>
-                  <div class="stat-label">Client Satisfaction</div>
-                </div>
-              </div>
-
-              <div class="details-grid">
-                <div class="detail-row">
-                  <div class="detail-item">
-                    <span class="detail-label">Specialization</span>
-                    <span class="detail-value">UI/UX Design &amp; Development</span>
-                  </div>
-                  <div class="detail-item">
-                    <span class="detail-label">Experience Level</span>
-                    <span class="detail-value">Senior Professional</span>
-                  </div>
-                </div>
-                <div class="detail-row">
-                  <div class="detail-item">
-                    <span class="detail-label">Education</span>
-                    <span class="detail-value">Computer Science, MIT</span>
-                  </div>
-                  <div class="detail-item">
-                    <span class="detail-label">Languages</span>
-                    <span class="detail-value">English, Spanish, French</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="cta-section">
-                <a href="#" class="btn btn-primary">
-                  <i class="bi bi-download"></i>
-                  Download Resume
-                </a>
-                <a href="#" class="btn btn-outline">
-                  <i class="bi bi-chat-dots"></i>
-                  Let's Talk
-                </a>
-              </div>
-            </div>
-          </div>
+      <div class="row">
+      <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
+      <div class="profile-card">
+        <div class="profile-header">
+        <div class="profile-image">
+        <img src="{{ about.profile_image.url }}" alt="Profile Image" class="img-fluid">
         </div>
+        <div class="profile-badge">
+        <i class="bi bi-patch-check" style="color: blue;"></i>
+        </div>
+
+        </div>
+
+        <div class="profile-content">
+        <h3>{{ about.name }}</h3>
+        <p class="profession">{{ about.profession }}</p>
+
+        <div class="contact-links">
+        <a href="mailto:{{ about.email }}" class="contact-item">
+        <i class="bi bi-envelope"></i>
+        {{ about.email }}
+        </a>
+        <a href="tel:{{ about.phone }}" class="contact-item">
+        <i class="bi bi-telephone"></i>
+        {{ about.phone }}
+        </a>
+        <a href="#" class="contact-item">
+        <i class="bi bi-geo-alt"></i>
+        {{ about.location }}
+        </a>
+        </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
+      <div class="about-content">
+        <div class="section-header">
+        <span class="badge-text">Get to Know Me</span>
+        <h2>Passionate About Creating Digital Experiences</h2>
+        </div>
+
+        <div class="description">
+        <p>{{ about.description }}</p>
+        {% if about.description_secondary %}
+        <p>{{ about.description_secondary }}</p>
+        {% endif %}
+        </div>
+
+        <div class="stats-grid">
+        <div class="stat-item">
+        <div class="stat-number">{{ about.projects_completed }}+</div>
+        <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+        <div class="stat-number">{{ about.years_experience }}+</div>
+        <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+        <div class="stat-number">{{ about.client_satisfaction }}%</div>
+        <div class="stat-label">Client Satisfaction</div>
+        </div>
+        </div>
+
+        <div class="details-grid">
+        <div class="detail-row">
+        <div class="detail-item">
+        <span class="detail-label">Specialization</span>
+        <span class="detail-value">{{ about.specialization }}</span>
+        </div>
+        <div class="detail-item">
+        <span class="detail-label">Experience Level</span>
+        <span class="detail-value">{{ about.experience_level }}</span>
+        </div>
+        </div>
+        <div class="detail-row">
+        <div class="detail-item">
+        <span class="detail-label">Education</span>
+        <span class="detail-value">{{ about.education }}</span>
+        </div>
+        <div class="detail-item">
+        <span class="detail-label">Languages</span>
+        <span class="detail-value">{{ about.languages }}</span>
+        </div>
+        </div>
+        </div>
+
+        <div class="cta-section">
+        {% if about.resume_link %}
+        <a href="{{ about.resume_link }}" class="btn btn-primary" target="_blank">
+        <i class="bi bi-download"></i>
+        Download Resume
+        </a>
+        {% endif %}
+        {% if about.talk_link %}
+        <a href="{{ about.talk_link }}" class="btn btn-outline" target="_blank">
+        <i class="bi bi-chat-dots"></i>
+        Let's Talk
+        </a>
+        {% endif %}
+        </div>
+      </div>
+      </div>
+      </div>
 
       </div>
 
-    </section><!-- /About Section -->
+    </section>
+    <!-- /About Section -->
 
     <!-- Stats Section -->
     <section id="stats" class="stats section light-background">
