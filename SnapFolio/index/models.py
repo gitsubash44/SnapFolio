@@ -22,3 +22,12 @@ class about(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Stat(models.Model):
+    count = models.PositiveIntegerField()
+    label = models.CharField(max_length=100)  # e.g., 'Happy Clients'
+    order = models.PositiveIntegerField(default=0)  # For ordering in the template
+
+    def __str__(self):
+        return f"{self.label}: {self.count}"
