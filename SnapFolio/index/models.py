@@ -31,3 +31,13 @@ class Stat(models.Model):
 
     def __str__(self):
         return f"{self.label}: {self.count}"
+
+
+class Skill(models.Model):
+    description = models.TextField(blank=True)
+    name = models.CharField(max_length=100)
+    icon = models.ImageField(upload_to='skills/', blank=True)  # Store skill icon images
+    order = models.PositiveIntegerField(default=0)  # For ordering in the showcase
+
+    def __str__(self):
+        return self.name
