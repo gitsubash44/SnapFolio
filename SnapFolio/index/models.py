@@ -41,3 +41,14 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Portfolio(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(upload_to='portfolio/')
+    link = models.URLField(blank=True)
+    order = models.PositiveIntegerField(default=0)  # For ordering in the showcase
+
+    def __str__(self):
+        return self.title
