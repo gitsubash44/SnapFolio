@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import about, Stat, Skill, Portfolio, Contact
+from .models import about, Stat, Skill, Portfolio, ContactMessage
 # Register your models here.
 admin.site.register(about)
 admin.site.register(Stat)
 admin.site.register(Skill)
 admin.site.register(Portfolio)
-admin.site.register(Contact)
+admin.site.register(ContactMessage)
