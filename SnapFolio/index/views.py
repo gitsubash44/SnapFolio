@@ -21,7 +21,7 @@ def index(request):
         if name and email and subject and message:
             ContactMessage.objects.create(name=name, email=email, subject=subject, message=message)
             messages.success(request, "Your message has been sent successfully.")
-            return HttpResponseRedirect(reverse('home') + '#contact')
+            return HttpResponseRedirect(reverse('index') + '#contact')
         else:
             messages.error(request, "Please fill in all fields.")
 
