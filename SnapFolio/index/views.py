@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import about, Stat , Skill, ContactMessage
+from .models import about, Stat , Skill, ContactMessage, Service
 from .models import Portfolio
 
 # Create your views here.
@@ -12,6 +12,7 @@ def index(request):
     stats = Stat.objects.all().order_by('order')
     skills = Skill.objects.all().order_by('order')
     portfolio = Portfolio.objects.all().order_by('order')
+    services = Service.objects.all().order_by('order')  # Fetch services ordered by 'order'
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -25,10 +26,10 @@ def index(request):
         else:
             messages.error(request, "Please fill in all fields.")
 
-
     return render(request, "index.html", {
         'about': about_info,
         'stats': stats,
         'skills': skills,
-        'portfolio': portfolio
+        'portfolio': portfolio,
+        'services': services  # Pass services to the template
     })
