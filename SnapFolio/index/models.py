@@ -75,8 +75,9 @@ class ContactMessage(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    icon = models.CharField(max_length=100)  # Store icon class names (e.g., 'bi bi-palette')
+    icon = models.CharField(max_length=100)
     order = models.PositiveIntegerField(default=0)  # For ordering in the showcase
 
     def __str__(self):
         return self.title
+    

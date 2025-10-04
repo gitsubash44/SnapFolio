@@ -553,11 +553,11 @@
               <div class="service-icon">
                 <i class="{{ service.icon }}"></i>
               </div>
-              <a href="service-details.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+              <a href="{% url 'service_detail' service.id %}" class="card-action d-flex align-items-center justify-content-center rounded-circle">
                 <i class="bi bi-arrow-up-right"></i>
               </a>
               <h3>
-                <a href="service-details.html">
+                <a href="{% url 'service_detail' service.id %}">
                   {{ service.title|title }}
                 </a>
               </h3>
