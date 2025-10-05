@@ -40,3 +40,7 @@ def ServiceDetailView(request, service_id):
     return render(request, "service-details.html", {
         'service': service
     })
+    
+    
+def articles(request):
+    return render(request, "articles.html")
