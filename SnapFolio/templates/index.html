@@ -41,7 +41,7 @@
               <div class="hero-visual">
                 <div class="profile-container">
                   <div class="profile-background"></div>
-                  <img src="static/img/profile/profile-2.webp" alt="Subash Dhami" class="profile-image">
+                    <img src="static/img/profile/profile.png" alt="Subash Dhami smiling confidently in a professional setting with a blurred modern office background" class="profile-image">
                 </div>
               </div>
             </div>
@@ -52,9 +52,6 @@
 
     </section>
     <!-- /Hero Section -->
-
-    <!-- Articles Section -->
-
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -391,48 +388,48 @@
       <!-- End Section Title -->
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-  <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+      <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-    <div class="row">
-      <!-- Sidebar Filters -->
-      <div class="col-lg-3 filter-sidebar">
-        <div class="filters-wrapper" data-aos="fade-right" data-aos-delay="150">
-          <ul class="portfolio-filters isotope-filters">
-            <li data-filter="*" class="filter-active">All Projects</li>
-            {% for code, label in portfolio.first.CATEGORY_CHOICES %}
-              <li data-filter=".filter-{{ code }}">{{ label }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
+        <div class="row">
+          <!-- Sidebar Filters -->
+          <div class="col-lg-3 filter-sidebar">
+            <div class="filters-wrapper" data-aos="fade-right" data-aos-delay="150">
+              <ul class="portfolio-filters isotope-filters">
+                <li data-filter="*" class="filter-active">All Projects</li>
+                {% for code, label in portfolio.first.CATEGORY_CHOICES %}
+                  <li data-filter=".filter-{{ code }}">{{ label }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
 
-      <!-- Portfolio Items -->
-      <div class="col-lg-9">
-        <div class="row gy-4 portfolio-container isotope-container" data-aos="fade-up" data-aos-delay="200">
-          {% for item in portfolio %}
-            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-{{ item.category }}">
-              <div class="portfolio-wrap">
-                <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}" loading="lazy" style="height:220px;object-fit:cover;">
-                <div class="portfolio-info">
-                  <div class="content">
-                    <span class="category">{{ item.get_category_display }}</span>
-                    <h4>{{ item.title }}</h4>
-                    <div class="portfolio-links">
-                      <a href="{{ item.image.url }}" class="glightbox" title="{{ item.title }}"><i class="bi bi-plus-lg"></i></a>
-                      {% if item.link %}
-                        <a href="{{ item.link }}" title="More Details" target="_blank"><i class="bi bi-arrow-right"></i></a>
-                      {% endif %}
+          <!-- Portfolio Items -->
+          <div class="col-lg-9">
+            <div class="row gy-4 portfolio-container isotope-container" data-aos="fade-up" data-aos-delay="200">
+              {% for item in portfolio %}
+                <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-{{ item.category }}">
+                  <div class="portfolio-wrap">
+                    <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}" loading="lazy" style="height:220px;object-fit:cover;">
+                    <div class="portfolio-info">
+                      <div class="content">
+                        <span class="category">{{ item.get_category_display }}</span>
+                        <h4>{{ item.title }}</h4>
+                        <div class="portfolio-links">
+                          <a href="{{ item.image.url }}" class="glightbox" title="{{ item.title }}"><i class="bi bi-plus-lg"></i></a>
+                          {% if item.link %}
+                            <a href="{{ item.link }}" title="More Details" target="_blank"><i class="bi bi-arrow-right"></i></a>
+                          {% endif %}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div><!-- End Portfolio Container -->
+              {% endfor %}
+            </div><!-- End Portfolio Container -->
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+      </div>
 
 
     </section>
@@ -495,96 +492,6 @@
             </div>
           </div>
           {% endfor %}
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card position-relative z-1">
-              <div class="service-icon">
-                <i class="bi bi-gem"></i>
-              </div>
-              <a href="service-details.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-                <i class="bi bi-arrow-up-right"></i>
-              </a>
-              <h3>
-                <a href="service-details.html">
-                  Design <span>systems</span>
-                </a>
-              </h3>
-              <p>
-                Praesent euismod varius tellus, vel bibendum nunc interdum at. Donec vehicula diam vel metus venenatis convallis. Aliquam erat volutpat. Etiam viverra magna sit amet.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card position-relative z-1">
-              <div class="service-icon">
-                <i class="bi bi-megaphone"></i>
-              </div>
-              <a href="service-details.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-                <i class="bi bi-arrow-up-right"></i>
-              </a>
-              <h3>
-                <a href="service-details.html">
-                  Marketing <span>strategies</span>
-                </a>
-              </h3>
-              <p>
-                Vivamus tempor velit id magna dictum, sed fermentum nisi faucibus. Integer nec pretium sapien. Fusce tincidunt ligula et purus consequat, ac pellentesque nulla eleifend.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-card position-relative z-1">
-              <div class="service-icon">
-                <i class="bi bi-code-slash"></i>
-              </div>
-              <a href="service-details.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-                <i class="bi bi-arrow-up-right"></i>
-              </a>
-              <h3>
-                <a href="service-details.html">
-                  Digital <span>platforms</span>
-                </a>
-              </h3>
-              <p>
-                Cras fermentum odio eu feugiat malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et accumsan cursus. Morbi placerat nulla vel nunc viverra accumsan.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-card position-relative z-1">
-              <div class="service-icon">
-                <i class="bi bi-graph-up"></i>
-              </div>
-              <a href="service-details.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-                <i class="bi bi-arrow-up-right"></i>
-              </a>
-              <h3>
-                <a href="service-details.html">
-                  Growth <span>acceleration</span>
-                </a>
-              </h3>
-              <p>
-                Aenean vel augue vel nisi bibendum posuere. Phasellus in lacus quis urna sodales dignissim. Duis aliquam libero eget risus facilisis. Quisque eget libero vel nisl fringilla.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-card position-relative z-1">
-              <div class="service-icon">
-                <i class="bi bi-camera-video"></i>
-              </div>
-              <a href="service-details.html" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-                <i class="bi bi-arrow-up-right"></i>
-              </a>
-              <h3>
-                <a href="service-details.html">
-                  Media <span>solutions</span>
-                </a>
-              </h3>
-              <p>
-                Etiam efficitur lacus in diam finibus, nec ultrices est sagittis. Maecenas elementum magna sed risus faucibus, nec commodo purus facilisis. Vestibulum accumsan magna.
-              </p>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -779,75 +686,75 @@
         <h3>Get In Touch</h3>
         <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.</p>
 
-    <form action="" method="post">
-      {% csrf_token %}
-      <div class="row gy-4">
-      <div class="col-md-6">
-        <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{ request.POST.name }}" required>
-      </div>
-      <div class="col-md-6">
-        <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ request.POST.email }}" required>
-      </div>
-      <div class="col-12">
-        <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ request.POST.subject }}" required>
-      </div>
-      <div class="col-12">
-        <textarea name="message" class="form-control" rows="6" placeholder="Message" required>{{ request.POST.message }}</textarea>
-      </div>
-      <div class="col-12 text-center">
-        {% if messages %}
-        {% for message in messages %}
-          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-          {{ message }}
-          </div>
-        {% endfor %}
-        {% endif %}
-        <button type="submit" class="btn">Send Message</button>
-      </div>
-      </div>
-    </form>
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="row gy-4">
+        <div class="col-md-6">
+          <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{ request.POST.name }}" required>
+        </div>
+        <div class="col-md-6">
+          <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ request.POST.email }}" required>
+        </div>
+        <div class="col-12">
+          <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ request.POST.subject }}" required>
+        </div>
+        <div class="col-12">
+          <textarea name="message" class="form-control" rows="6" placeholder="Message" required>{{ request.POST.message }}</textarea>
+        </div>
+        <div class="col-12 text-center">
+          {% if messages %}
+          {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+            </div>
+          {% endfor %}
+          {% endif %}
+          <button type="submit" class="btn">Send Message</button>
+        </div>
+        </div>
+      </form>
 
 
+            </div>
           </div>
         </div>
-      </div>
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const form = document.querySelector(".php-email-form");
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector(".php-email-form");
 
-          if (form) {
-        form.addEventListener("submit", function (e) {
-          const name = form.querySelector("[name='name']");
-          const email = form.querySelector("[name='email']");
-          const message = form.querySelector("[name='message']");
+            if (form) {
+          form.addEventListener("submit", function (e) {
+            const name = form.querySelector("[name='name']");
+            const email = form.querySelector("[name='email']");
+            const message = form.querySelector("[name='message']");
 
-          if (!name.value.trim()) {
-            e.preventDefault();
-            name.classList.add("is-invalid");
-          } else {
-            name.classList.remove("is-invalid");
-          }
+            if (!name.value.trim()) {
+              e.preventDefault();
+              name.classList.add("is-invalid");
+            } else {
+              name.classList.remove("is-invalid");
+            }
 
-          if (!email.value.trim() || !email.value.includes("@")) {
-            e.preventDefault();
-            email.classList.add("is-invalid");
-          } else {
-            email.classList.remove("is-invalid");
-          }
+            if (!email.value.trim() || !email.value.includes("@")) {
+              e.preventDefault();
+              email.classList.add("is-invalid");
+            } else {
+              email.classList.remove("is-invalid");
+            }
 
-          if (!message.value.trim()) {
-            e.preventDefault();
-            message.classList.add("is-invalid");
-          } else {
-            message.classList.remove("is-invalid");
-          }
-        });
-          }
-        });
-      </script>
+            if (!message.value.trim()) {
+              e.preventDefault();
+              message.classList.add("is-invalid");
+            } else {
+              message.classList.remove("is-invalid");
+            }
+          });
+            }
+          });
+        </script>
 
-      </div>
+        </div>
 
     </section><!-- /Contact Section -->
 
