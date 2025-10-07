@@ -33,7 +33,14 @@ def index(request):
         'portfolio': portfolio,
         'services': services  # Pass services to the template
     })
-    
+
+
+def Services(request):
+    services = Service.objects.all().order_by('order')
+    return render(request, "services.html", {
+        'services': services
+    })
+
 
 def ServiceDetailView(request, service_id):
     service = Service.objects.get(id=service_id)

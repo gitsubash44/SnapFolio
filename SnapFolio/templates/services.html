@@ -49,86 +49,37 @@
     </div><!-- End Page Title -->
 
     <!-- Service Details Section -->
-    <section id="service-details" class="service-details section">
+    <section id="services" class="services section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-      <div class="row gy-4">
-
-        <div class="col-lg-8">
-        <div class="service-details-slider swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-          {
-            "loop": true,
-            "speed": 600,
-            "autoplay": {
-            "delay": 5000
-            },
-            "slidesPerView": 1,
-            "pagination": {
-            "el": ".swiper-pagination",
-            "type": "bullets",
-            "clickable": true
-            }
-          }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-          {% for image in service.images %}
-          <div class="swiper-slide">
-            <img src="{{ image }}" alt="" class="img-fluid" loading="lazy">
+        <div class="row justify-content-center">
+          {% for service in services %}
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ 100|add:service.order|default:100 }}">
+            <div class="service-card position-relative z-1">
+              <div class="service-icon">
+                <i class="{{ service.icon }}"></i>
+              </div>
+              <a href="{% url 'service_detail' service.id %}" class="card-action d-flex align-items-center justify-content-center rounded-circle">
+                <i class="bi bi-arrow-up-right"></i>
+              </a>
+              <h3>
+                <a href="{% url 'service_detail' service.id %}">
+                  {{ service.title|title }}
+                </a>
+              </h3>
+              <p>
+                {{ service.description }}
+              </p>
+            </div>
           </div>
           {% endfor %}
-          </div>
-          <div class="swiper-pagination"></div>
         </div>
-
-        <div class="content mt-5">
-          <h3>{{ service.title }}</h3>
-          <p>{{ service.description }}</p>
-
-          <div class="features mt-4">
-          <div class="row gy-4">
-            {% for feature in service.features %}
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1|mul:100 }}">
-            <div class="feature-box d-flex align-items-center">
-              <i class="bi bi-check"></i>
-              <h4>{{ feature }}</h4>
-            </div>
-            </div>
-            {% endfor %}
-          </div>
-          </div>
-        </div>
-        </div>
-
-        <div class="col-lg-4">
-        <div class="service-info">
-          <h4>Service Information</h4>
-          {% if service.duration %}
-          <div class="info-item">
-          <i class="bi bi-clock"></i>
-          <h5>Project Duration</h5>
-          <p>{{ service.duration }}</p>
-          </div>
-          {% endif %}
-          {% if service.manager %}
-          <div class="info-item">
-          <i class="bi bi-person-check"></i>
-          <h5>Project Manager</h5>
-          <p>{{ service.manager }}</p>
-          </div>
-          {% endif %}
-          {% if service.contact_support %}
-          <div class="info-item">
-          <i class="bi bi-telephone"></i>
-          <h5>Contact Support</h5>
-          <p>{{ service.contact_support }}</p>
-          </div>
-          {% endif %}
-        </div>
-        </div>
-
-      </div>
 
       </div>
 

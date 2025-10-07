@@ -77,9 +77,13 @@ class Service(models.Model):
     description = models.TextField()
     icon = models.CharField(max_length=100)
     order = models.PositiveIntegerField(default=0)  # For ordering in the showcase
+    duration = models.CharField(max_length=100, blank=True)  # e.g., "3-6 months"
+    manager = models.CharField(max_length=100, blank=True)  # e.g., "Sarah Johnson"
+    contact_support = models.CharField(max_length=100, blank=True)  # e.g., "+1 (555) 123-4567"
+    features = models.JSONField(blank=True, default=list)  # List of features (e.g., ["SEO", "SMM"])
+    images = models.JSONField(blank=True, default=list)  # List of image URLs
 
     def __str__(self):
         return self.title
-    
 
 
