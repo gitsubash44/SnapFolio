@@ -73,11 +73,7 @@
           }
           </script>
           <div class="swiper-wrapper align-items-center">
-          {% for image in service.images %}
-          <div class="swiper-slide">
-            <img src="{{ image }}" alt="" class="img-fluid" loading="lazy">
-          </div>
-          {% endfor %}
+           
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -89,7 +85,7 @@
           <div class="features mt-4">
           <div class="row gy-4">
             {% for feature in service.features %}
-            <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1|mul:100 }}">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
             <div class="feature-box d-flex align-items-center">
               <i class="bi bi-check"></i>
               <h4>{{ feature }}</h4>
@@ -101,37 +97,44 @@
         </div>
         </div>
 
+        
+
         <div class="col-lg-4">
-        <div class="service-info">
-          <h4>Service Information</h4>
-          {% if service.duration %}
-          <div class="info-item">
-          <i class="bi bi-clock"></i>
-          <h5>Project Duration</h5>
-          <p>{{ service.duration }}</p>
+          <div class="service-info">
+            <h4>Service Information</h4>
+            {% if service.duration %}
+            <div class="info-item">
+            <i class="bi bi-clock"></i>
+            <h5>Project Duration</h5>
+            <p>{{ service.duration }}</p>
+            </div>
+            {% endif %}
+            {% if service.manager %}
+            <div class="info-item">
+            <i class="bi bi-person-check"></i>
+            <h5>Project Manager</h5>
+            <p>{{ service.manager }}</p>
+            </div>
+            {% endif %}
+            {% if service.contact_support %}
+            <div class="info-item">
+            <i class="bi bi-telephone"></i>
+            <h5>Contact Support</h5>
+            <p>{{ service.contact_support }}</p>
+            </div>
+            {% endif %}
           </div>
-          {% endif %}
-          {% if service.manager %}
-          <div class="info-item">
-          <i class="bi bi-person-check"></i>
-          <h5>Project Manager</h5>
-          <p>{{ service.manager }}</p>
-          </div>
-          {% endif %}
-          {% if service.contact_support %}
-          <div class="info-item">
-          <i class="bi bi-telephone"></i>
-          <h5>Contact Support</h5>
-          <p>{{ service.contact_support }}</p>
-          </div>
-          {% endif %}
         </div>
+      </div>
+    </div>
+    <div>
+    <div class="mt-2 p-5">
+      {% if service.images %}
+        <div class="swiper-slide">
+          <img src="{{ service.images.url }}" alt="" class="img-fluid w-100" style="height: 300px; width: 100%;" loading="lazy">
         </div>
-
-      </div>
-
-      </div>
-
+      {% endif %}
+    </div>
     </section>
     <!-- /Service Details Section -->
 
@@ -144,11 +147,8 @@
         <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://subashdhami.com.np/">Subash Dhami</a>
       </div>
     </div>
 
