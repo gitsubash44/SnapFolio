@@ -472,22 +472,22 @@
         </div>
 
         <div class="row justify-content-center">
-          {% for service in services %}
+          {% for service in services|slice:":3" %}
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ 100|add:service.order|default:100 }}">
             <div class="service-card position-relative z-1">
               <div class="service-icon">
-                <i class="{{ service.icon }}"></i>
+          <i class="{{ service.icon }}"></i>
               </div>
               <a href="{% url 'service_detail' service.id %}" class="card-action d-flex align-items-center justify-content-center rounded-circle">
-                <i class="bi bi-arrow-up-right"></i>
+          <i class="bi bi-arrow-up-right"></i>
               </a>
               <h3>
-                <a href="{% url 'service_detail' service.id %}">
-                  {{ service.title|title }}
-                </a>
+          <a href="{% url 'service_detail' service.id %}">
+            {{ service.title|title }}
+          </a>
               </h3>
               <p>
-                {{ service.description }}
+          {{ service.description|truncatewords:30 }}
               </p>
             </div>
           </div>
