@@ -7,11 +7,7 @@
     <section id="hero" class="hero section">
 
       <div class="background-elements">
-        {% if index.background_image %}
-          <div class="bg-circle circle-1" style="background-image: url('{{ index.background_image.url }}');"></div>
-        {% else %}
-          <div class="bg-circle circle-1"></div>
-        {% endif %}
+        <div class="bg-circle circle-1"></div>
         <div class="bg-circle circle-2"></div>
       </div>
 
@@ -22,9 +18,10 @@
 
             <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
               <div class="hero-text">
-                <h1>{{ index.title }}</h1>
-                <h2>{{ index.subtitle }}</h2>
-                <p class="description">{{ index.description }}</p>
+                <h1>Hi<span class="accent-text"> it's me</span></h1>
+                <h2>Subash Dhami</h2>
+                <p class="lead">I'm a <span class="typed" data-typed-items="UI/UX Designer, Web Developer, SEO Specialist, App Developer"></span></p>
+                <p class="description">Passionate Python Django developer creating dynamic web applications that blend clean code with user-friendly design. Let’s turn your ideas into reality.</p>
 
                 <div class="hero-actions">
                   <a href="#portfolio" class="btn btn-primary">View My Work</a>
@@ -44,7 +41,7 @@
               <div class="hero-visual">
                 <div class="profile-container">
                   <div class="profile-background"></div>
-                  <img src="{{ index.profile_image.url }}" alt="{{ index.subtitle }}" class="profile-image">
+                    <img src="static/img/profile/profile.png" alt="Subash Dhami smiling confidently in a professional setting with a blurred modern office background" class="profile-image">
                 </div>
               </div>
             </div>

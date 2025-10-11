@@ -1,6 +1,6 @@
 from django.db import models
 
-class index(models.Model):
+class indexhero(models.Model):
     title = models.CharField(max_length=200, default="Hi, it's me")
     subtitle = models.CharField(max_length=200, default="Subash Dhami")
     description = models.TextField(
