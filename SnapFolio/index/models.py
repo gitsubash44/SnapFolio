@@ -1,5 +1,17 @@
 from django.db import models
 
+class index(models.Model):
+    title = models.CharField(max_length=200, default="Hi, it's me")
+    subtitle = models.CharField(max_length=200, default="Subash Dhami")
+    description = models.TextField(
+        default="Passionate Python Django developer creating dynamic web applications that blend clean code with user-friendly design. Let’s turn your ideas into reality."
+    )
+    profile_image = models.ImageField(upload_to='profile/', default='static/img/profile/profile.png')
+    background_image = models.ImageField(upload_to='background/', blank=True)
+
+    def __str__(self):
+        return self.title
+
 class about(models.Model):
     name = models.CharField(max_length=100)
     profession = models.CharField(max_length=100)

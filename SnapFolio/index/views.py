@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import about, Stat , Skill, ContactMessage, Service
+from .models import about, Stat , Skill, ContactMessage, Service, index
 from .models import Portfolio
 
 # Create your views here.
@@ -13,6 +13,7 @@ def index(request):
     skills = Skill.objects.all().order_by('order')
     portfolio = Portfolio.objects.all().order_by('order')
     services = Service.objects.all().order_by('order')  # Fetch services ordered by 'order'
+    index_info = index.objects.first()  # Fetch the first index object
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -31,7 +32,8 @@ def index(request):
         'stats': stats,
         'skills': skills,
         'portfolio': portfolio,
-        'services': services  # Pass services to the template
+        'services': services,  # Pass services to the template
+        'index_info': index_info  # Pass index information to the template
     })
 
 
