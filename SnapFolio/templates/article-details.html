@@ -42,7 +42,8 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="{% url 'index' %}">Home</a></li>
-            <li class="current">Articles</li>
+            <li><a href="{% url 'articles' %}">Articles</a></li>
+            <li class="current">Articles Details</li>
           </ol>
         </nav>
       </div>
@@ -54,38 +55,6 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
-
-          <div class="col-lg-8">
-            <div class="articles-details-slider swiper init-swiper">
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": 1,
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide">
-                  <img src="static/img/articless/articless-1.webp" alt="" class="img-fluid" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                  <img src="static/img/articless/articless-2.webp" alt="" class="img-fluid" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                  <img src="static/img/articless/articless-3.webp" alt="" class="img-fluid" loading="lazy">
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-
             <!-- Articles Content -->
             <div class="col-lg-4">
               <div class="articles-info p-4 shadow-sm text-center">
@@ -95,9 +64,7 @@
                 <p class="text-light">Date: <strong>{{ date }} Oct-10-2025</strong></p>
               </div>
             </div>
-
         </div>
-
       </div>
 
     </section><!-- /Articles Section -->

@@ -59,3 +59,6 @@ def ServiceDetailView(request, service_id):
     
 def articles(request):
     return render(request, "articles.html")
+
+def article_details(request):
+    return render(request, "article-details.html")

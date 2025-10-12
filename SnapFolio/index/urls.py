@@ -11,4 +11,5 @@ urlpatterns = [
     path("services/", views.Services, name="services"),  # Services page
     path("service/<int:service_id>/", views.ServiceDetailView, name="service_detail"),  # Service detail view
     path("articles/", views.articles, name="articles"),  # Articles page
+    path("article-details/", views.article_details, name="article_detail"),  # Article details page
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
