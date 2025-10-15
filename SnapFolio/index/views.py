@@ -57,11 +57,35 @@ def ServiceDetailView(request, service_id):
     })
     
     
+from django.shortcuts import render, get_object_or_404
+from .models import Article
+
 def articles(request):
-    return render(request, "articles.html")
+    """Show all articles"""
+    all_articles = Article.objects.all()
+    return render(request, "articles.html", {"articles": all_articles})
+
 
 def article_details(request):
-    return render(request, "article-details.html")
+    """Show article list (like preview cards)"""
+    articles = Article.objects.all()
+    return render(request, "article-details.html", {"articles": articles})
 
-def article_read(request):
-    return render(request, "article-read.html")
+
+def article_read(request, pk):
+    """Show single article"""
+    article = get_object_or_404(Article, pk=pk)
+    article.views += 1
+    article.save(update_fields=['views'])
+
+    # Related articles (excluding current one)
+    related_articles = Article.objects.exclude(pk=pk)[:3]
+
+    return render(
+        request,
+        "article-read.html",
+        {
+            "article": article,
+            "related_articles": related_articles,
+        },
+    )
