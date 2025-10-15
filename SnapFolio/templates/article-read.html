@@ -43,7 +43,7 @@
           <ol>
             <li><a href="{% url 'index' %}">Home</a></li>
             <li><a href="{% url 'articles' %}">Articles</a></li>
-            <li><a href="{% url 'article-details' %}">Article Details</a></li>
+            <li><a href="{% url 'article_detail' %}">Article Details</a></li>
             <li class="current">Title</li>
           </ol>
         </nav>
@@ -53,77 +53,125 @@
     <!-- Articles Section -->
 
 <!-- Updated Bootstrap Article Cards -->
-<div class="container py-4">
 
-  <!-- Article Card 1 -->
-  <div class="card mb-4 bg-dark text-light border-0 shadow-sm rounded-4">
-    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-start">
-      <div class="me-md-3 flex-grow-1">
-        <h5 class="fw-bold mb-2">Rock, Paper, Scissor in Python</h5>
-        <div class="d-flex align-items-center mb-3">
-          <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="author">
-          <small class="text-secondary">
-            Subash Dhami • May 6, 2024 • 1 min read • 65 views
-          </small>
-        </div>
-        <p class="small mb-0 text-secondary">
-          <code>import random</code> — define choices and get user input for rock, paper, or scissors...
-        </p>
-      </div>
-      <div class="article-image text-center text-muted bg-secondary bg-opacity-25 px-3 py-4 rounded-3">
-        No Image
-      </div>
+ <div class="container py-5">
+
+  <!-- Back Button -->
+  <a href="{% url 'article_detail' %}" class="btn btn-outline-light mb-4">&larr; Back to Articles</a>
+
+  <!-- Article Header -->
+  <div class="text-center mb-4">
+    <img src="https://w7.pngwing.com/pngs/806/963/png-transparent-python-hd-logo.png" class="img-fluid rounded-4 mb-3" alt="Article image">
+    <h2 class="fw-bold">Rock, Paper, Scissor in Python</h2>
+    <div class="d-flex justify-content-center align-items-center gap-2 text-secondary small">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJbkS8rSEiErRJogdT8v1ZeURdcK7YcGmvXA&s" style="width: 40px; height: 40px;" class="rounded-circle" alt="Author">
+      <span>Subash Dhami • May 6, 2024 • 1 min read • 65 views</span>
     </div>
   </div>
 
-  <!-- Article Card 2 -->
-  <div class="card mb-4 bg-dark text-light border-0 shadow-sm rounded-4">
-    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-start">
-      <div class="me-md-3 flex-grow-1">
-        <h5 class="fw-bold mb-2">Exception Handling in Python</h5>
-        <div class="d-flex align-items-center mb-3">
-          <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="author">
-          <small class="text-secondary">
-            Subash Dhami • May 6, 2024 • 2 min read • 23 views
-          </small>
-        </div>
-        <p class="small mb-0 text-secondary">
-          The <code>try</code> block tests code for errors. The <code>except</code> block handles them, and <code>finally</code> runs cleanup code...
-        </p>
-      </div>
-      <div class="article-image text-center text-muted bg-secondary bg-opacity-25 px-3 py-4 rounded-3">
-        No Image
-      </div>
-    </div>
-  </div>
+  <!-- Article Content -->
+  <div class="bg-dark p-4 rounded-4 border border-secondary">
+    <p>
+      The Rock, Paper, Scissors game is a fun way to learn basic Python input/output and logic.
+      Below is a simple implementation:
+    </p>
 
-  <!-- Article Card 3 -->
-  <div class="card mb-4 bg-dark text-light border-0 shadow-sm rounded-4">
-    <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-start">
-      <div class="me-md-3 flex-grow-1">
-        <h5 class="fw-bold mb-2">Functions and Classes in Python</h5>
-        <div class="d-flex align-items-center mb-3">
-          <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="author">
-          <small class="text-secondary">
-            Subash Dhami • May 6, 2024 • 3 min read • 19 views
-          </small>
-        </div>
-        <p class="small mb-0 text-secondary">
-          Define a function with the <code>def</code> keyword. Classes are created with <code>class</code> followed by the name and colon...
-        </p>
-      </div>
-      <div class="article-image text-center text-muted bg-secondary bg-opacity-25 px-3 py-4 rounded-3">
-        No Image
-      </div>
-    </div>
-  </div>
+<pre class="bg-secondary bg-opacity-25 text-light p-3 rounded-3"><code>import random
 
+def get_player_choice():
+    choices = ['rock', 'paper', 'scissors']
+    player_choice = input("Choose rock, paper, or scissors: ").lower()
+    if player_choice not in choices:
+        print("Invalid choice!")
+        return None
+    return player_choice
+
+def get_computer_choice():
+    return random.choice(['rock', 'paper', 'scissors'])
+
+def determine_winner(player, computer):
+    if player == computer:
+        return "It's a tie!"
+    elif (player == 'rock' and computer == 'scissors') or \
+         (player == 'paper' and computer == 'rock') or \
+         (player == 'scissors' and computer == 'paper'):
+        return "You win!"
+    else:
+        return "You lose!"
+
+player = get_player_choice()
+if player:
+    computer = get_computer_choice()
+    print(f"Computer chose: {computer}")
+    print(determine_winner(player, computer))
+</code></pre>
+
+    <p>
+      This code uses Python’s <code>random</code> module and basic control flow to make a fun interactive game.
+    </p>
+  </div>
 </div>
-
-
-
     
     <!-- /Articles Section -->
+
+    <!--Related Articles Section -->
+<div class="container py-5">
+    <h4 class="fw-bold mb-4 text-center">Related Articles</h4>
+
+    <div class="row g-4">
+
+      <!-- Related Article 1 -->
+      <div class="col-md-4">
+        <a href="article.html?id=2" class="text-decoration-none text-light">
+          <div class="card bg-dark border-0 shadow-sm rounded-4 h-100">
+            <img src="https://via.placeholder.com/400x200?text=Exception+Handling" class="card-img-top rounded-top-4" alt="Exception Handling">
+            <div class="card-body">
+              <h6 class="fw-bold">Exception Handling in Python</h6>
+              <small class="text-secondary">May 6, 2024 • 2 min read</small>
+              <p class="small text-secondary mt-2">
+                Learn how to handle errors in Python using try, except, and finally blocks...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Related Article 2 -->
+      <div class="col-md-4">
+        <a href="article.html?id=3" class="text-decoration-none text-light">
+          <div class="card bg-dark border-0 shadow-sm rounded-4 h-100">
+            <img src="https://via.placeholder.com/400x200?text=Functions+and+Classes" class="card-img-top rounded-top-4" alt="Functions and Classes">
+            <div class="card-body">
+              <h6 class="fw-bold">Functions and Classes in Python</h6>
+              <small class="text-secondary">May 6, 2024 • 3 min read</small>
+              <p class="small text-secondary mt-2">
+                Understand how to define reusable functions and organize your code using classes...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Related Article 3 -->
+      <div class="col-md-4">
+        <a href="article.html?id=1" class="text-decoration-none text-light">
+          <div class="card bg-dark border-0 shadow-sm rounded-4 h-100">
+            <img src="https://via.placeholder.com/400x200?text=Rock+Paper+Scissors" class="card-img-top rounded-top-4" alt="Rock Paper Scissors">
+            <div class="card-body">
+              <h6 class="fw-bold">Rock, Paper, Scissor in Python</h6>
+              <small class="text-secondary">May 6, 2024 • 1 min read</small>
+              <p class="small text-secondary mt-2">
+                Build a simple and fun command-line game using Python’s random module...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+    <!-- /Related Articles Section -->
 
   </main>
 
@@ -146,9 +194,6 @@
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
