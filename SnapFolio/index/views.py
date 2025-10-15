@@ -62,3 +62,6 @@ def articles(request):
 
 def article_details(request):
     return render(request, "article-details.html")
+
+def article_read(request):
+    return render(request, "article-read.html")
