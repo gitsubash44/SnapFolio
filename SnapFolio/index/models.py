@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 class indexhero(models.Model):
@@ -99,3 +100,18 @@ class Service(models.Model):
         return self.title
 
 
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='articles/', blank=True, null=True)
+    content = models.TextField()
+    short_description = models.TextField(blank=True)
+    views = models.PositiveIntegerField(default=0)
+    read_time = models.CharField(max_length=50, default="1 min read")
+    date_published = models.DateField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-date_published']
+
+    def __str__(self):
+        return self.title
