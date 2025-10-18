@@ -3,8 +3,9 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import about, Stat , Skill, ContactMessage, Service, indexhero
+from .models import about, Stat , Skill, ContactMessage, Service, indexhero, MainArticle, SubArticle
 from .models import Portfolio
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 def index(request):
@@ -56,36 +57,34 @@ def ServiceDetailView(request, service_id):
         'service': service
     })
     
-    
-from django.shortcuts import render, get_object_or_404
-from .models import Article
 
+
+# Articles page — show all main topics
 def articles(request):
-    """Show all articles"""
-    all_articles = Article.objects.all()
-    return render(request, "articles.html", {"articles": all_articles})
+    mains = MainArticle.objects.all()
+    return render(request, "articles.html", {"mains": mains})
 
 
-def article_details(request):
-    """Show article list (like preview cards)"""
-    articles = Article.objects.all()
-    return render(request, "article-details.html", {"articles": articles})
+# Article Details — show sub-articles for a main topic
+def article_details(request, main_id):
+    main_article = get_object_or_404(MainArticle, id=main_id)
+    sub_articles = SubArticle.objects.filter(main_article=main_article)
+    return render(request, "article-details.html", {
+        "main_article": main_article,
+        "sub_articles": sub_articles
+    })
 
 
-def article_read(request, pk):
-    """Show single article"""
-    article = get_object_or_404(Article, pk=pk)
-    article.views += 1
-    article.save(update_fields=['views'])
+# Article Read — show full content of a sub-article
+def article_read(request, sub_id):
+    sub_article = get_object_or_404(SubArticle, id=sub_id)
+    sub_article.views += 1
+    sub_article.save()
+    related_articles = SubArticle.objects.filter(
+        main_article=sub_article.main_article
+    ).exclude(id=sub_id)[:3]
 
-    # Related articles (excluding current one)
-    related_articles = Article.objects.exclude(pk=pk)[:3]
-
-    return render(
-        request,
-        "article-read.html",
-        {
-            "article": article,
-            "related_articles": related_articles,
-        },
-    )
+    return render(request, "article-read.html", {
+        "sub_article": sub_article,
+        "related_articles": related_articles
+    })

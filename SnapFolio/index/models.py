@@ -100,12 +100,27 @@ class Service(models.Model):
         return self.title
 
 
-class Article(models.Model):
+
+class MainArticle(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=100)
+    author_image = models.ImageField(upload_to='authors/', blank=True, null=True)
     image = models.ImageField(upload_to='articles/', blank=True, null=True)
-    content = models.TextField()
     short_description = models.TextField(blank=True)
+    date_published = models.DateField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-date_published']
+
+    def __str__(self):
+        return self.title
+
+
+class SubArticle(models.Model):
+    main_article = models.ForeignKey(MainArticle, related_name='sub_articles', on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    image = models.ImageField(upload_to='sub_articles/', blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
     read_time = models.CharField(max_length=50, default="1 min read")
     date_published = models.DateField(default=timezone.now)
@@ -114,4 +129,4 @@ class Article(models.Model):
         ordering = ['-date_published']
 
     def __str__(self):
-        return self.title
+        return f"{self.main_article.title} — {self.title}"
